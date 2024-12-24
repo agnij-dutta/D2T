@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #000000, #1a1a1a, #2c2c2c);
+            color: #ffffff;
+        }
+
+        .notifications-container {
+            padding: 2rem;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .notification {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .notification p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="notifications-container">
+        <h2>Pending Notifications</h2>
+        {% if requests %}
+            {% for request in requests %}
+                <div class="notification">
+                    <p>User ID: {{ request.user_id }} has requested to join.</p>
+                    <p>Status: {{ request.status }}</p>
+                    <form method="POST" action="{{ url_for('handle_request', request_id=request.request_id) }}">
+                        <button type="submit" name="action" value="approve" class="btn">Approve</button>
+                        <button type="submit" name="action" value="reject" class="btn">Reject</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No pending notifications.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %} 

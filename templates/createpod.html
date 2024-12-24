@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create POD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #000000, #1a1a1a, #2c2c2c);
+            color: #ffffff;
+        }
+
+        .left-panel {
+            width: 30%;
+            padding: 2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .right-panel {
+            width: 70%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #ffffff;
+            border: none;
+            border-bottom: 1px solid #ffffff;
+            outline: none;
+            background: transparent;
+            transition: 0.5s;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .btn {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: 0.5s;
+            letter-spacing: 4px;
+            background: transparent;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #000;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ffffff,
+                        0 0 25px #ffffff,
+                        0 0 50px #ffffff,
+                        0 0 100px #ffffff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .file-upload {
+            border: 1px dashed #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .file-upload:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload label {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="left-panel">
+        <div class="input-group">
+            <label for="pod-name">POD Name</label>
+            <input type="text" id="pod-name" required>
+        </div>
+    </div>
+    
+    <div class="right-panel">
+        <form method="post" action="{{ url_for('process_video') }}" enctype="multipart/form-data">
+            <div id="demo-form">
+                <div class="form-section">
+
+                    <div class="input-group">
+                        <label for="video-link">Video Link</label>
+                        <input type="url" id="video-link" name="video_url" placeholder="Enter video URL" required>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <div class="file-upload">
+                        <label for="file-input">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Add file</p>
+                        </label>
+                        <input type="file" id="file-input" name="lecture_file" multiple>
+                    </div>
+                </div>
+                
+                <br>
+                <br>
+
+            </div>
+            <div class="button-container">
+                    
+                
+                <!-- <button class="btn" id="delete-note-btn">Delete Note</button> -->
+            </div>
+            <button class="btn" id="new-note-btn">New Note</button>
+            <button class="btn" id="save-btn" type="submit">Generate Notes</button>
+        </form>
+    </div>
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let noteCounter = 1;
+        const newNoteBtn = document.getElementById('new-note-btn');
+        
+        newNoteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Get the original form
+            const originalForm = document.getElementById('demo-form');
+            
+            // Create a clone of the form
+            const newForm = originalForm.cloneNode(true);
+            
+            // Set unique ID for the new form
+            newForm.id = `demo-form-${noteCounter}`;
+            
+            // Clear any input values in the clone
+            newForm.querySelectorAll('input').forEach(input => {
+                input.value = '';
+            });
+            
+            // Insert the new form after the last form
+            originalForm.parentNode.appendChild(newForm);
+            
+            noteCounter++;
+        });
+    });
+</script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const newNoteBtn = document.getElementById('new-note-btn');
+        const saveBtn = document.getElementById('save-btn');
+        // const deleteNoteBtn = document.getElementById('delete-note-btn');
+        let noteCounter = 1;
+        
+
+        newNoteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            
+            // Get the original form
+            const originalForm = document.getElementById('demo-form');
+            
+            // Create a clone of the form
+            const newForm = originalForm.cloneNode(true);
+            // newForm.style.display = 'flex';
+            
+            // Set unique ID for the new form
+            newForm.id = `demo-form-${noteCounter}`;
+            
+            // Clear any input values in the clone
+            newForm.querySelectorAll('input, textarea').forEach(input => {
+                input.value = '';
+            });
+            
+            // Insert the new form before the save button
+            saveBtn.parentNode.insertBefore(newForm, newNoteBtn);
+            
+            noteCounter++;
+        });
+    });
+</script>
+
+
+</body>
+</html>

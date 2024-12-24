@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View POD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #000000, #1a1a1a, #2c2c2c);
+            color: #ffffff;
+        }
+
+        .content {
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .pod-title {
+            margin-bottom: 20px;
+        }
+
+        .lecture-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lecture-item {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            color: #ffffff;
+            background: transparent;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2 class="pod-title">{{ subject.sname }}</h2>
+        <h3>Lectures</h3>
+        <ul class="lecture-list">
+            {% for lecture in lectures %}
+            <li class="lecture-item">
+                <h4>{{ lecture.lec_name }}</h4>
+                <a href="{{ lecture.url }}" class="btn">Watch Lecture</a>
+                <form method="POST" action="{{ url_for('process_video') }}">
+                    <input type="hidden" name="subject_id" value="{{ subject.subject_id }}">
+                    <input type="hidden" name="url" value="{{ lecture.url }}">
+                    <button type="submit" class="btn">Generate Notes</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+{% endblock %} 

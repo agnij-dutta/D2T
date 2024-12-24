@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #000000, #1a1a1a, #2c2c2c);
+            color: #ffffff;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #ffffff;
+            border: none;
+            border-bottom: 1px solid #ffffff;
+            outline: none;
+            background: transparent;
+            transition: 0.5s;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: 0.5s;
+            letter-spacing: 4px;
+            background: transparent;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #000;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ffffff,
+                        0 0 25px #ffffff,
+                        0 0 50px #ffffff,
+                        0 0 100px #ffffff;
+        }
+
+        .new-user {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .new-user a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>New User Registration</h2>
+        <form method="post" action="{{ url_for('register') }}">
+            <div class="input-group">
+                <input type="text" id="username" name="username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="input-group checkbox">
+                <input type="checkbox" id="is_admin" name="is_admin" value="1">
+                <label for="is_admin">Register as Admin</label>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <div class="new-user">
+            <a href="{{ url_for('login') }}">Already have an account? Login here.</a>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,312 @@
+From now on things will really get a little bit 
+different from what you have seen before. So,   for instance the first thing that has changed 
+is the format of the slides. I was using some   other type of slides before, but now we have a 
+distinctly different format for the slides. 
+  It is also maybe to symbolize that things 
+are changing from this week onwards.   So, basically we will start looking at multiple 
+random variables. If you remember before we saw   that random variables are very useful ways 
+to deal with the actual probability space,   which may be very complex. So, you look at 
+functions from the outcome to a specific number   and then only look at that. And the distribution 
+of that has something to say about what the   probability space is, so this is very useful. 
+And now we are going to start looking at multiple   random variables. It turns out you saw before 
+that some usual outcomes and experiments that   you study and practice are quite complex and 
+there are a lot of different outcomes that are   of interest to you and lot of different random 
+variables defined on the same probability space   that are of interest to you. And these 
+random variables could be connected because   they are all defined on the same space. 
+So, how do we deal with that? What are the tools   and what are the definitions of distributions? 
+How do you deal with the distribution there?   How do you do computations with that and how 
+do you generally think about such scenarios is   the main focus of week 3. Once again we will 
+see toy examples, we will see slightly more   complicated examples and maybe not too much 
+of python coding this week also, but let us   get started with how to deal with multiple 
+random variables in a probability space. 
+  So, let us begin with a very simple example. Let 
+us say you have a fair coin, let us say and then   you toss it 3 times, you toss it, pick it up, toss 
+it again, pick it up, toss it again, so you will   have 3 different outcomes for this and naturally 
+you can define 3 random variables. So, here is a   very natural definition for 3 random variables. 
+I am going to call X1 as something that indicates   whether the first toss was heads or tails. 
+So, this notion of indicating will be very useful.   We will often define these type of random 
+variables. They will take a value, 1, if some   event happens, 0, if some event does not happen 
+it is sort of like the Bernoulli trial random   variable. These are very popular in probability; 
+they appear again and again and again. So,   this X1 is an indicator for the first toss being 
+heads, if it is 1, if the first toss is heads,   0 if the first toss is tails.
+And then now you can do X2, X3,   is not it, so X2 is for the second toss, X3 is 
+for the third toss. Now, these 3 random variables   are defined on the same space and here is a very 
+ready-made example, so this is is quickly pointing   you to a very typical scenario where will you, 
+where you will use multiple random variables,   basically repeated Bernoulli trials. So, when 
+you have repeated repeated trials of any sort,   you are naturally going to have multiple random 
+variables and that is something that will show up   all the time. 
+And   also you notice here something very interesting 
+about the way these random variables are defined,   if you take all 3 of them together these things 
+completely describe the outcome of the experiment.   So, experiment is simple enough, it is a tos 
+experiment and you do not have a very-very   complex outcome and you define 2 random variables 
+that sort of completely specifies the outcome. 
+  And another interesting observation we can make 
+about this particular case is events that you   define with X1, supposing I define the event X1 
+equals 1. We saw before the random variable taking   a particular set of values or taking one value 
+is actually an event. Now, if you define an event   with X1 alone, it is going to be independent 
+of any event that I define with X2 alone. 
+  There are really only very few events 
+we can define here, is just 0 and 1,   but still X1 equals 1 is independent of X2 equals 
+1 and it is independent of X3 equals 1. So, you,   each random variable is sort of, even though it 
+all of them live in the same probability space,   they are talking about independent occurrences in 
+the experiment and so if you just define events   with each of them separately, they are going to 
+be, those events are going to be independent. 
+  So, notice, so what I did there that is like a 
+short line in which a lot of things were going on.   If you define event one with X1 and event 2 
+with X2, whatever way in which you define it,   these 2 events are going to be independent. 
+So, that is another observation you can make   about these things. So this is a 
+very typical setting once again   where we will use multiple random 
+variables to describe the outcome. 
+  So, let us move on to something that 
+is slightly more complicated, maybe a   little bit more confusing. So, this is like a 
+lottery, I mean, so you have a 2 digit lottery.   We have seen this in one such problem before, 
+but let us go back and revisit it again.   So, you select a 2 digit number 00 to 99 uniformly 
+at random. So, this is what you selected. 
+  So, this is already complex, I mean, maybe 
+not that complex, but still it is a little bit   more complex than the previous one. The previous 
+one, there are really only 8 different outcomes,   it is easy to deal with, here there are 100 
+different outcomes and there are 2 digits and you   can do, and there is a number that is coming out 
+and you can do various things with it, so you can   extract lot of partial information about this, 
+the outcome that comes out of this experiment   and you can define random variables. 
+Like for instance I have defined here   X to be the digit in the units place. 
+So, you have 00, 99, units place is the   the first one from the right and then you have 
+the tens place, so those are the 2 digits,   so the the first random variable I am defining 
+here, this X is simply the number in the units   place, so you can take example. So, supposing the 
+random number is 23, X will take the value 3. Now,   I am defining one more random variable. 
+Notice what I am doing. Y is the remainder;   I think there is a spelling mistake here; that 
+is okay, so I will underline it, so that you can   correct it later. So, Y is the reminder, that is 
+remainder, that is obtained when the number itself   is divided by 4. So, let us see a few examples. 
+So, let us say the number is 23, so for this guy   X is going to be, suppose the outcome is 23, then 
+this will imply X is 3, and what will be Y. 
+  So, if you divide 23 by 4 you will 
+get remainder 3, so Y also becomes 3.   So, let us take another case, let us say 48, 
+and for 48 you are going to get X equals 8,   then Y equals 0, is not it? So, likewise you can 
+do. I know, in any number of things you can do,   you will get X taking values from 0 to 
+9. And you can show in fact that X is   actually uniformly distributed in 0 to 9. 
+So, we will see maybe later on some calculations,   but this is not too hard to imagine. So, what 
+is probability that X equals 0, probability   that x equals 0 is the same as the 2 digit number 
+being 00 or 10 or 20 or 30, there are 10 favorable   outcomes, there are 100 total outcomes to 10 by 
+100, it becomes 1 by 10, that is the same thing   for 1 also. Probability that X equals one again, 
+there are 10 favorable outcomes, 01, 11, 21, all   the way till 91, 10 by 100, its 1 by 10, so all 
+of them are equally likely, so X is uniform. 
+  So, likewise maybe this is a little 
+bit more complicated for you to see,   but Y will also be uniform in 0, 1, 2, 3. 
+I will leave this as an exercise for you,   but you can again check, so what is probability 
+that y equals 0, what are all the favorable   outcomes for you that result in Y being 0. It 
+could be 00 or 04 or 08 or 12 or 16 like that,   so all the way up to 96, all the multiples of 4 
+that are between 00 and 99 and you will see that   is exactly 25 in number, so 25 by 100, you will 
+get 1 by 4 for the probability that Y is 0. 
+  Now, for Y equals 1 maybe you have to think 
+a little bit more, but you can see what are   all the numbers that will give you a remainder 
+1 when divided by 4, the first choice is 01.   Next is 05, next is 09, 13, 17, so on, so you 
+will see that again is also exactly 25, you take   all the multiples of 4 and add 1 to them you will 
+get these numbers, that is again 25. Likewise you   will see for 2 and 3 also, there is 25 favorable 
+outcomes out of the 100, so you will get 1 by 4,   so X and Y are uniform in their respective 
+ranges and their ranges are different. 
+  So, here is 2 different random variables 
+that I defined on a common probability space.   If you look at the dependence or independence, 
+so previously, when in the coin toss experiment   if I defined an event with X1, we saw that it was 
+clearly independent of anything I defined with X2,   but notice what can happen here. Supposing 
+somebody told you the event X equals 1 occurred,   so X equals 1 has occurred, which 
+means the last digit is 1. 
+  And then if you have to look 
+at the event Y equals 0,   what do you think will happen here, can can y be 
+0 if X is 1; that is not possible, any number that   ends in 1 cannot be a multiple of 4. It cannot 
+give you a remainder 0 and 4 when you divide by   4. So, you see that this X and Y, if you define 
+an event with X, you define we went with Y, these   2 events are not going to be independent. 
+One will determine or affect the occurrence of the   other, occurrence of one affects the occurrence 
+of the other. So, that clearly shows that these 2   events are not independent, so this is a different 
+type of 2 random variables or 2 random variables   we defined here and one seems to affect the 
+value of the other. So, this can also happen. So,   we already saw two examples, one was a simple coin 
+toss example, where it appears that you define one   random variable with the first toss, another 
+the second toss, those two do not affect. 
+  And here we define something slightly more 
+intricate with a two digit number and we are   seeing that one random variable can influence the 
+other. Now, this is important in practice and I   will show you, we will go to the next example 
+to see how things like this can play a role   in modeling and other things in practice. 
+We go back to our favorite IPL powerplay over   data. This is something that is of interest 
+to us, we have been keeping this as one common   theme throughout the course. So, here is once 
+again what is my experiment, it is one over of   IPL powerplay, maybe you take it to be the first 
+over for instance, I mean, if you want a specific   example or maybe the third over or fourth or 
+any particular over you pick or maybe any over,   all the possible overs. 
+So, here is,   here are two random variables that I have defined 
+in this IPL powerplay, one over of the IPL   powerplay, the first random variable I will call 
+X, this is the number of runs scored in the over,   the total number of runs scored in all the 
+deliveries that were part of the over. So,   that is X for you. Then you can have a 
+number Y, the random variable Y which is   the number of wickets that fell in the over. 
+So, once again notice, there are two different   random variables, X is the number of runs in the 
+over, Y is the number of wickets in the over.   Now, if you think of once again the IPL outcome 
+is, the out over is quite a complex outcome,   so many things happen in the over and you are not 
+going to be able to model everything properly,   but let us see if we can model X and Y. 
+This is a specific interest, is not it?   X and y are very interesting random variables as 
+far as the entire outcome is concerned in this   experiment. So, if you look at the events Y equals 
+0, Y equals 1, Y equals 2, Y equals 0 is probably   the most common, there were no wickets that 
+fell and Y equals 1, one wicket fell in the over   and Y equals 2, two wickets fell in the over. So, 
+this is something that can happen. It can happen   in the powerplay if you have good bowling. 
+So, now notice what we can say, so there is this   connection between X and Y that you may imagine 
+in your mind as a possibility when you model,   like for instance supposing given Y is 0, we 
+expect X to take larger values than when given   Y is 1 and given Y is 2 we generally expect 
+X to take significantly lower values. 
+  Now, it may or may not be true, maybe the last 
+2 wickets with the fill in the last 2 balls or   something like that, it could happen that way, 
+maybe all the runs were scored before that,   but but you do not imagine that to be likely, 
+if the wickets are falling then the runs are   going to be slightly slower, so slightly lower, 
+so notice how this kind of thinking and modeling   from our side is helping in the understanding 
+of data that comes from the IPL powerplay.
+  Supposing, you want to build a model for the IPL 
+over and then you want to think of these random   variables, maybe you have to take these kind of 
+things into account. So, given number of wickets,   maybe you want to modify the distribution for 
+how many runs fell, so things like this, so   you already see that in complex experiments, these 
+kind of relationships, I mean, again everything is   random there is no deterministic relationship. 
+I cannot write the equation of any sort, but still   in the distribution there is some understanding 
+of what might happen if some wicket fell. So,   these kind of relationships are very important 
+when you try to model complex experiments and   this is something that is routinely done 
+when we want to write down distributions,   particularly when you want to understand data, 
+this kind of thinking is very-very useful. 
+  So, hopefully, I have convinced you that there are 
+experiments both the small ones and big sized ones   where defining multiple random variables, 
+understanding relationships between them,   trying to model distributions and between 
+these random variables is of great use.   So, how do we have some, what are the main objects 
+that we can focus on when we want to jointly study   multiple random variables? So, that is what we 
+are going to see next, that is the first part. 
+  So, first we will begin with two random 
+variables, just two, we will go to more than two,   soon enough, you will see there are many more 
+you can define, but we will begin with two   random variables. In two random variables it turns 
+out, so you remember we had PMF for one discrete   random variable, when you have two discrete random 
+variables defined in the same probability space   you can have many types of PMFs. 
+One is something called the joint PMF, the other   is, these are objects called marginal PMFs, the 
+thirdly you will have objects called conditional   PMFs. All these three, one needs to have a good 
+understanding and capability of manipulating.   So, previously itself we saw the one PMF had 
+some simple conditions that it needed to satisfy   and you could play around with it and then 
+you could use it for various things. 
+  Now, similarly when we go to joint PMFs 
+and marginal PMFs and conditional PMFs,   you will again have properties that we 
+satisfy, there will be structure, conditions,   relationships between them, all of them you should 
+be able to write equations for and manipulate and   solve and all that, so all that will happen 
+in this section. So, let us get into it. 
+  So, first we will define what a joint PMF 
+of two discrete random variables is. So,   here is the definition - X and Y are discrete 
+random variables that are defined in the same   probability space. You can go back to the examples 
+I gave you and think of specific examples if this   is confusing you. So, let us say the range of X 
+and range of Y are known, I mean Tx and Ty. 
+  So, we saw in the examples it is easy to double 
+think of the range of a random variable once it   is defined. Now, notice how the joint PMF of X 
+and Y is defined. We will first denote it as f   within the subscript you will have xy. It is not, 
+do not think of it as the product of xy. Now,   there is that confusion, it may be the product 
+of xy, but usually that is not the case, so when   I write f sub xy, invariably I mean, the joint 
+distribution of X and Y, joint PMF of X and Y. 
+  But it can happen that I am interested in the 
+product also, we will come back to it later, but   live with this ambiguity for once and it will 
+be clear. So, usually people will say the join   PMF fxy, so it will be clear to you what it 
+is. Now, what is this fxy? It is a function   from the Cartesian product Tx cross Ty to 0, 
+1, and how do we define this function. 
+  It is defined, so fxy, the arguments are 
+two now because it Is a Cartesian product,   there is a t1 that will come from Tx and there 
+is a t2 that will come from Ty, for every t1 and   t2 this fxy will assign a number. So, you give me 
+t1, give me t2, give me a value in the range of X,   give me a value in the range of y, this joint PMF 
+will assign a probability value between 0 and 1,   it will be a probability to the t1 comma t2. 
+Now, contrast this with the PMF itself.   PMF was one random variable, there was a range for 
+that random variable, for every value in the range   the PMF of that point is simply the probability 
+that X equals t. Now, in the joint PMF we have   two random variables, so clearly we need 
+t1 and t2, one coming from the range of 1,   the other coming from the range of 2 and 
+the joint PMF simply assigns the probability   of X equals t1 and Y equals t2. 
+I put t1 here, t1 here, this is wrong, so please   note this correction, this is going to become 
+t2, probability of X equals t1 and Y equals t2,   that is what happens here. So, let me just make 
+sure I make this correction, a little typo. So,   this is defined as the joint PMF. It is sort of 
+clear what it is and we will see quickly some   examples on computation to be sure. 
+We understand what the joint PMF is. So,   usually one can write it as a table or a matrix, 
+so usually the PMF is written in a table in one   row, the value of x and then value of the PMF, so 
+here you have 2 axis, t1 and t2, so you can write   it as a table or a matrix. And notice this popular 
+notation, so this notation is very important.   So, instead of writing this and, and, and and 
+complicating things, we will simply put a comma,   X equals t1 comma, Y equals t2. 
+So, this comma, do not interpret it as   or anything it is and, so this is both of these, 
+and the probability of that is the joint PMF. So,   let us look at some examples, you will see, 
+it will be clear with some examples. 
+  We are going to look at a situation where 
+you tossed a fair coin twice and you defined   indicators X1 and X2 for the first toss being 
+heads and the second toss being heads. So,   this is the definition of that. Now, I know 
+that the range of X1 is 0, 1, range of X2 is 0,   1, and if I want to, if I were to evaluate f 
+X1 X2 of 0 comma 0, so this is the joint PMF   of X1 and X2 evaluated at 0, 0, that 
+is the probability that X1 equals 0   and X2 equals 0, is not it?  
+So, now remember this is a fair coin tossed   twice and is an independent tosses, physically 
+independent losses, so it is very natural to   assume these two events are independent, so X1 
+equal to 0 and X2 equal to 0 is independent,   so probability of the intersection and is 
+basically product because of the independence. So,   you have half into half you get 1 by 4. Same 
+thing with f X1 X2 evaluated as 0 comma 1. 
+  So, the joint PMF seems easy to evaluate in 
+this case, is not it? You just have to write   down all the possibilities and simply multiply 
+the probabilities and that is because of the   independent. So, independence is usually very-very 
+easy and now we can make our little table here,   so this table, notice how this table works. The 
+values of t1 are here 0, 0, and the values of t2   are here 0, 1. And this matrix or table 
+is basically f X1 X2 of t1 comma t2. 
+  So, this 1 by 4, for instance this 
+1 by 4 here is f X1 X2 of 1 comma 1.   Easy enough, so this is all that is to joint PMFs, 
+so once again imagine how this will generalize,   supposing X1 and X2 are 2 general random 
+variables, we simply put all the values taken   by X1 on the row in the first row, all the values 
+taken by X2 on the first column and wherever you   have the matrix in the ijth position you look 
+at X1 taking value I X2 taking value j, then you   write down what the probability of that is.
+So, that is that is all it is. So,   you can now build the PMF and these are very 
+useful things to write. So, notice a few   interesting and important properties, we 
+will look at them later as well, but this is   easy, every entry, the PMF will take values 
+between 0 and 1, so that is very clear and the   joint PMF, of course, takes values between 0 and 
+1, if you add up the values of all the joint PMFs,   so all possible values in this table if 
+you add up, you are going to get 1. 
+  So, this, these are two properties that 
+will show up again and again, each entry   is between 0 and 1,   sum of all entries equals 1, so these are 
+very important properties of a joint PMF.   Any joint PMF will satisfy these two properties. 
+So, note it down, this is very-very important,   each entry in the joint PMF table once you 
+make it is going to be between 0 and 1.   You add up all of them, you should get 
+one, it is very-very important. 
+  Why should you get 1 if you add up all of 
+them? That exhausts all the possible values   that X1 can take and X2 can take and clearly 
+that should be 1. I mean, in any outcome X1   is going to belong to its range, X2 is going to 
+belong to its range and if you add up everything   that basically tells you X1 belongs to 
+the range and X2 belongs to its range,   so that is going to be 1. So, 
+that happens in general. 
+  So, let us look at the next example. We looked 
+at this random 2g, 2 digit number example,   you remember X was the units place and 
+Y was the remainder that you got when   you divided by 4; that is also called 
+number modulo 2, modulo 4, I am sorry,   the number modulo 4 is basically remainder   when divided by 4.   So, now we can do a simple little calculation 
+if you want to look at fxy of 0 comma 0. 
+  This is the probability that X equals 0 and 
+y equals 0, number ends in 0 and should be a   multiple of 4 that is what this means, what are 
+the favorable cases, you see 00 and 10 will not   work. Why? 10 is X equals 0, but y is not 0, it 
+is not divisible by 4, you get a remainder of 2,   when you divide by 4, so 1, 0 will not 
+happen, so you see 00, 20, 40, 60, 80   all of these are, will satisfy both 
+conditions is 5 out of 100, 1 by 20. 
+  Let us look at fxy of 1 comma 0, you 
+want the number to end in 1, X equals 1   and you want it to be a multiple of 4, Y 
+equals 0. Now, this is not going to happen.   There is no outcome that will give you this 
+and you get a probability of 0 for this. So,   notice how this has gone, some value is 1 by 
+20, some value is 0. So, let us look at some   other value, now 4 comma 2, number ends in 2. 
+So, I think I got that wrong, number ends in 4,   seems to be a day of typos, number ends in 4 and 
+number is 2 modulo 4. What do I mean by 2 modulo   4? Remainder 2 when divided by, this is the same 
+as, let me just write it in terms of Y, this is X,   X equals 4 and Y equals 2. So, now you can sort 
+of look at all the numbers, if you want X equals   4 and Y equals 2, 14 will satisfy that, so 04 
+clearly will not when X is 4, but Y is 0. 
+  If you go to 14 you will get that, X will be 
+4, it ends in 4 and you get a remainder of 2   when divided by 4, 34 will satisfy that, 54 will 
+satisfy, 74, 94 will satisfy that, again you get   5 by 100. It seems like it is either number is 1 
+by 20 or 0, no other number is probably going to   work and that is true. So, you can check out all 
+the possibilities and if you write down fxy of   t1 comma t2, now notice how this is more general 
+than the previous picture, pay attention to this,   you want to make a table of fxy of t1 comma t2, 
+you put the values of t1 here along these rows,   put the value along the first row and 
+put the values of t2 along the column 0,   1, 2, 3, 4, all the way to 9, 0, 1, 2, 3. 
+And 0 comma 0 is 1 by 20, 1 comma 0 is 0,   2 comma 0 is again 1 by 20, 3 comma 0 is 0, so on. 
+So, notice how this 1 by 20 and 0 alternate. Now,   if you go to t2 being 1, 0 comma 1 will be 0, why 
+is 0 comma 1 0, you can check that, if the number   is ending in a 0 and you get, you are getting 1 
+mod 4, that will not happen, if the number ends in   0 you will only get either 0 mod 4 or 2 mod 4, so 
+you cannot get anything else, so it will be 0. 
+  But 1 comma 1 is possible, you can 
+end in 1 and you can get 1 mod 4,   so that would happen with numbers like 01, 21, 41 
+things like that, so you would get five numbers   once again, so you either keep getting 1 by 
+20 or 0. You have to check this, maybe it is   a bit of a pain to check everything, but you can 
+check in general sort of argue writing down with   expressions that this has to be the joint PMF. 
+Once again notice every entry in the joint PMF is   between 0 and 1, and if you add up all of 
+them, you will get 1. You can check it out,   you have 4, 1 by 20 is here, 10 1 by 
+20 is 15 one by 20 is 20 1 by 20, is 20   into 1 by 20 is 1. So, both the properties 
+are satisfied for the joint PMF and it is   also a reasonable joint PMF for this problem. 
+So, notice how things are getting slightly more   complex and as you go more and more into complex 
+outcomes this kind of dependency is very crucial   and it will become more and more complicated 
+to write down. So, let me stop here with the   first part of the lecture. We will pick up with 
+marginal PDFs in the second part going on. 
