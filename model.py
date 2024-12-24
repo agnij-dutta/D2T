@@ -40,12 +40,14 @@ class Lecture(db.Model):
     __tablename__ = 'lecture'
     lec_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     lec_name = db.Column(db.String)
-    insti_note = db.Column(LargeBinary, nullable=False)
-    url = db.Column(db.String, nullable=False)
-    trans = db.Column(db.Text, nullable=False)
-    notes = db.Column(db.Text, nullable=False)
-    summary = db.Column(db.Text, nullable=False)
+    insti_note = db.Column(LargeBinary)
+    url = db.Column(db.String)
+    trans = db.Column(db.Text)
+    notes = db.Column(db.Text)
+    summary = db.Column(db.Text)
     flashcard = db.Column(db.Text)
+    chapters = db.Column(db.Text)   
+    quiz = db.Column(db.Text)
 
 class Student_notes(db.Model):
     __tablename__ = 'student_notes'

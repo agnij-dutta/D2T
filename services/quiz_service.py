@@ -28,45 +28,40 @@ class QuizService:
             response = self.model.generate_content(prompt.format(text=text[:4000]))
             result = response.text
             print(f"[DEBUG] Raw quiz response: {result[:200]}...")
-            
+
             questions = []
             current_question = None
             current_options = []
+            correct_answer = None
             
             for line in result.split('\n'):
                 line = line.strip()
                 if not line:
                     continue
-                    
+                
                 if line.startswith('Q'):
                     if current_question and current_options:
                         questions.append({
                             'question': current_question,
                             'options': current_options,
-                            'correct': ''  # Will be filled later
+                            'correct': correct_answer  # Fill in the correct answer
                         })
-                    current_question = line[line.find(':')+1:].strip()
+                    current_question = line[line.find(':') + 1:].strip()
                     current_options = []
+                    correct_answer = None  # Reset for the new question
                 elif line.startswith(('a)', 'b)', 'c)', 'd)')):
                     current_options.append(line[2:].strip())
                 elif line.startswith('CORRECT:'):
-                    if current_question and current_options:
-                        questions.append({
-                            'question': current_question,
-                            'options': current_options,
-                            'correct': line[8:].strip()
-                        })
-                        current_question = None
-                        current_options = []
-            
+                    correct_answer = line[8:].strip()  # Get the correct answer
+
             # Add the last question if exists
             if current_question and current_options:
                 questions.append({
                     'question': current_question,
                     'options': current_options,
-                    'correct': ''
+                    'correct': correct_answer
                 })
-            
+
             print(f"[DEBUG] Successfully created {len(questions)} questions")
             return questions
             
